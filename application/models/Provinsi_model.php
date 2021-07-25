@@ -64,13 +64,19 @@
 
         public function getProvinsi($keyword = null)
         {
-            return $this->db
-            ->select ("id_provinsi,nama_provinsi,logo_provinsi,kode_provinsi")
-            ->where('nama_provinsi', $keyword)
-            ->like ('nama_provinsi', $keyword)
-            ->order_by('id_provinsi','desc')
-            ->get('provinsi')
-            ->result_array();
+            return $this->db->query(
+                "SELECT
+                    id_provinsi,
+                    nama_provinsi,
+                    logo_provinsi,
+                    kode_provinsi
+                FROM
+                    provinsi
+                WHERE
+                    nama_provinsi LIKE '%$keyword%'
+                ORDER BY
+                    id_provinsi DESC"
+            )->result_array();
         }
         
         public function countProvinsi($keyword=null)
@@ -123,7 +129,7 @@
                 // jika gagal :
                 $this->session->set_flashdata('error', $this->upload->display_errors());
                 }	  
-//              return "default.jpg"; 
+            // return "default.jpg"; 
         }
 
         public function hapusProvinsi($id)
@@ -131,6 +137,27 @@
           $this->db
           ->where ('id_provinsi',$id)
           ->delete('provinsi');
+        }
+
+        public function getValidationRules()
+        {
+            return [
+                [
+                    'field' => 'kode_provinsi',
+                    'label' => 'Kode Provinsi',
+                    'rules' => 'trim|required'
+                ],
+                [
+                    'field' => 'nama_provinsi',
+                    'label' => 'Nama Provinsi',
+                    'rules' => 'trim|required'
+                ],
+                [
+                    'field' => 'logo_provinsi',
+                    'label' => 'Gambar (.png)',
+                    'rules' => 'callback_file_check'
+                ]
+            ];
         }
     }
 ?>

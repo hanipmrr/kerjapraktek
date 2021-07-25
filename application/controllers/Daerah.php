@@ -16,11 +16,6 @@ class Daerah extends CI_Controller
         $data['judul']      = 'Halaman Daerah';
         $data['daerah']     = $this->Daerah_model->getDaerahById($id_prov);
         $data['id_prov']    = $id_prov; 
-        // echo "<pre>";
-        // var_dump($data["daerah"]);
-        // echo "</pre>";
-        // die;
-        $this->load->library('pagination');
 
         $data["data_perhalaman"]= 9;
         $data["halaman"]        = isset($hal) ? $hal : 1;
@@ -40,7 +35,7 @@ class Daerah extends CI_Controller
 
         if(isset($_POST['submit'])){
             $data['keyword'] = $this->input->post('keyword');
-            $data['daerah'] = $this->Daerah_model->getDaerah($data['keyword']);
+            $data['daerah'] = $this->Daerah_model->getDaerah($id_prov, ucwords($data['keyword']));
 
             // set session
             $this->session->set_userdata('keyword',$data['keyword']);

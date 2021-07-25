@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 use Dompdf\Dompdf;
 use Dompdf\Options;
+
 class ExportPDF extends CI_Controller {
 
     public function __construct()

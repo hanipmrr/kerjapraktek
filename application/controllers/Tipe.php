@@ -9,27 +9,24 @@
             $this->load->model('Tipe_model');
         }
         
-        public function index($id_prov, $id_daerah, $id_provinsi) 
+        public function index($id_prov, $id_daerah) 
         {
             $data['judul']      = 'Tipe Benda';               
             $data['tipe']       = $this->Tipe_model->getTipeById($id_daerah);
             $data['id_prov']    = $id_prov;
             $data['id_daerah']  = $id_daerah;
-            $data['id_provinsi']  = $id_provinsi;
-
             
             $this->load->view('templates/header', $data);
             $this->load->view('tipe/index', $data);
             $this->load->view('templates/footer');
         }
 
-        public function tambah($id_prov, $id_daerah, $id_provinsi)
+        public function tambah($id_prov, $id_daerah)
         {
             if(isset($_SESSION['username'])){
                 $data['judul']      = "Tambah Tipe";
                 $data['id_prov']    = $id_prov;
                 $data['id_daerah']  = $id_daerah;
-                $data['id_provinsi']  = $id_provinsi;
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('tipe/tambah',$data);
@@ -38,25 +35,24 @@
             } else { redirect('auth'); }
         }
                 
-        public function prosesTambahTipe($id_prov, $id_daerah, $id_provinsi)
+        public function prosesTambahTipe($id_prov, $id_daerah)
         {
             $this->Tipe_model->tambahtipe();
-            redirect (base_url()."tipe/index/". $id_prov. '/'.$id_daerah. '/'.$id_provinsi);
+            redirect (base_url()."tipe/index/". $id_prov. '/'.$id_daerah);
         }
 
-        public function hapus ($id_prov, $id_daerah, $id_tipe, $id_provinsi)
+        public function hapus ($id_prov, $id_daerah, $id_tipe)
         {
             $this->Tipe_model->hapusTipe($id_tipe);
-            redirect (base_url()."tipe/index/". $id_prov. '/'.$id_daerah. '/'.$id_provinsi);
+            redirect (base_url()."tipe/index/". $id_prov. '/'.$id_daerah);
         }
 
-        public function updateTipe($id_prov, $id_daerah, $id_tipe,$id_provinsi)
+        public function updateTipe($id_prov, $id_daerah, $id_tipe)
         {
             $data['judul']      = "Update Tipe";
             $data['id_daerah']  = $id_daerah;
             $data['id_prov']    = $id_prov;
             $data['id_tipe']    = $id_tipe; 
-            $data['id_provinsi']    = $id_provinsi; 
 
 
             $data['post']       = $this->Tipe_model->getTipeByIdUpdate($id_tipe);
