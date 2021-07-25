@@ -53,9 +53,9 @@ a {
 	color:#101312
 }
 
-a:hover,a:focus,a:active,a.active {
+/* a:hover,a:focus,a:active,a.active {
 	color:#c2253e
-}
+} */
 
 h1,h2,h3,h4,h5,h6 {
 	font-weight: 300;
@@ -697,15 +697,6 @@ textarea#comments {
 }
 
 .portfolio-item .item-caption {
-	margin:  auto;
-	padding: 25px 20px;
-	overflow: hidden;
-	background-color:rgb(255, 255, 255);
-	border-radius: 15px;
-	margin-bottom: 15px;
-	border: 3px solid black;
-	display: block !important;	
-	text-align:center;
 	-webkit-transition:all .5s ease-in-out;
 	-moz-transition:all .5s ease-in-out;
 	-o-transition:all .5s ease-in-out;
@@ -1032,13 +1023,6 @@ aside.clients img {
 	margin:50px auto
 }
 
-footer {
-	padding:25px 0;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	/* position: absolute; */
-}
 
 footer span.copyright {
 	text-transform:uppercase;
@@ -1623,7 +1607,6 @@ i.surfingbird::before{
     left: 0px;
     width: 100%;
     height: 100%;
-    background-color: rgba(255,255,255, 0.95);    
     -webkit-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
@@ -1634,7 +1617,6 @@ i.surfingbird::before{
 	-o-transform: translate(0px, -100%) scale(1, 0);
 	-ms-transform: translate(0px, -100%) scale(1, 0);
 	transform: translate(0px, -100%) scale(1, 0);    
-    opacity: 0;
     z-index: 9999999;
 }
 
@@ -1644,10 +1626,9 @@ i.surfingbird::before{
 	-o-transform: translate(0px, 0px) scale(1, 1);
 	-ms-transform: translate(0px, 0px) scale(1, 1);
 	transform: translate(0px, 0px) scale(1, 1); 
-    opacity: 1;
 }
 
-#search-wrapper input[type="search"] {
+/* #search-wrapper input[type="search"] {
     position: absolute;
     top: 50%;
     width: 100%;
@@ -1662,17 +1643,17 @@ i.surfingbird::before{
     padding-left: 30px;
     padding-right: 30px;
     outline: none;
-}
+} */
 
-#search-wrapper .btn {
+/* #search-wrapper .btn {
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: 61px;
     margin-left: -45px;
-}
+} */
 
-#search-wrapper .close {
+/* #search-wrapper .close {
     position: fixed;
     top: 15px;
     right: 15px;
@@ -1683,7 +1664,7 @@ i.surfingbird::before{
 	opacity: 1;
 	padding: 10px 17px;
 	font-size: 27px;
-}
+} */
 
 /*-----------------------------------------------------------------------------------*/
 /*  SPLASH
@@ -2649,20 +2630,6 @@ label {
   #submit-btn:hover {
 	box-shadow: 0px 1px 18px #24c64f;
   }
-
-  .table1 {
-    color: #444;
-    border-collapse: collapse;
-    border: 1px solid #000000;
-	margin-left: auto;
-	margin-right: auto;
-	width: 100%;
-	margin-left: 2em;
-	
-
-	& > tbody {
-		width: 100%;
-	}
 }
  
 .table1 tr th{
@@ -2673,7 +2640,7 @@ label {
 .table1, th, td {
     padding: 8px 20px;
     text-align: left;
-	border: 1px solid #000000
+	border: 1px solid #d5d5d5;
 }
  
 .table1 tr:hover {
@@ -2694,6 +2661,8 @@ table tr td:first-child  {
 	width: 150px;
 	
 }
+
+
 
 .img-post{
 	float: right;

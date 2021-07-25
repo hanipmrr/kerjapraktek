@@ -58,14 +58,30 @@
 
         }
 
-        public function getDaerah($keyword = null)
+        public function getDaerah($id_provinsi, $keyword = null)
         {
-            return $this->db
-            ->select ("id_daerah,nama_daerah,id_provinsi,logo_daerah,kode_daerah")
-            ->like('nama_daerah', $keyword)
-            ->order_by('nama_daerah','asc')
-            ->get('daerah')
-            ->result_array();
+            // return $this->db
+            // ->select ("id_daerah,nama_daerah,id_provinsi,logo_daerah,kode_daerah")
+            // ->like('nama_daerah', $keyword)
+            // ->order_by('nama_daerah','asc')
+            // ->get('daerah')
+            // ->result_array();
+
+            return $this->db->query(
+                "SELECT
+                    id_daerah,
+                    nama_daerah,
+                    id_provinsi,
+                    logo_daerah,
+                    kode_daerah
+                FROM 
+                    daerah
+                WHERE 
+                    id_provinsi = $id_provinsi AND
+                    nama_daerah LIKE '%$keyword%'
+                ORDER BY
+                    nama_daerah ASC"
+            )->result_array();
         }
         
         public function countDaerah($keyword=null)
