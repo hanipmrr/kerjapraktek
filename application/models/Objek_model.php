@@ -60,37 +60,39 @@
 
             public function tambahobjek() 
             {   
-                    $config['upload_path']      = './logo/objek/';
-                    $config['allowed_types']    = 'jpg|png|gif';
-                    $config['overwrite']        = true;
-                    $config['max_size']         = 2048; // 2mb
+                // KURANG ERROR VALIDATION
+                // USER TIDAK MENGETAHUI APAKAH DATA SUDAH MASUK ATAU BELUM
+                // LALU JIKA TIDAK MASUK, ERRORNYA APA?
+                $config['upload_path']      = './logo/objek/';
+                $config['allowed_types']    = 'jpg|png|gif';
+                $config['overwrite']        = true;
+                $config['max_size']         = 2048; // 2mb
                     
                 $this->load->library('upload', $config); // load konfigurasi uploadnya
-                    
-                if($this->upload->do_upload('logo_post_tangible'))
-                    {
+
+                if($this->upload->do_upload('logo_post_tangible')) {
                     $fileData = $this->upload->data();    
                     // jika berhasil :
-                    $data = array(
-                    'nama_post_tangible' => $this->input->post('nama_post_tangible'),
-                    'detail_post_tangible' => $this->input->post('detail_post_tangible'),
-                    'alamat_post_tangible' => $this->input->post('alamat_post_tangible'),
-                    'sejarah_post_tangible' => $this->input->post('sejarah_post_tangible'),
-                    'no_regnas_post_tangible' => $this->input->post('no_regnas_post_tangible'),
-                    'jenis_post_tangible' => $this->input->post('jenis_post_tangible'),
-                    'kode_post_tangible' => $this->input->post('kode_post_tangible'),
-                    'id_tangible' => $this->input->post('id_tangible'),
-                    'id_provinsi' => $this->input->post('id_provinsi'),
-                    'logo_post_tangible' => $fileData['file_name']   
-                    );
-                    $this->db->insert('post_tangible', $data);
-                    }
-                    else 
-                    {
+                    $data = [
+                        'nama_post_tangible'        => $this->input->post('nama_post_tangible'),
+                        'detail_post_tangible'      => $this->input->post('detail_post_tangible'),
+                        'alamat_post_tangible'      => $this->input->post('alamat_post_tangible'),
+                        'sejarah_post_tangible'     => $this->input->post('sejarah_post_tangible'),
+                        'no_regnas_post_tangible'   => $this->input->post('no_regnas_post_tangible'),
+                        'jenis_post_tangible'       => $this->input->post('jenis_post_tangible'),
+                        'kode_post_tangible'        => $this->input->post('kode_post_tangible'),
+                        'id_tangible'               => $this->input->post('id_tangible'),
+                        'id_provinsi'               => $this->input->post('id_provinsi'),
+                        'logo_post_tangible'        => $fileData['file_name']   
+                    ];
+
+                    $insert = $this->db->insert('post_tangible', $data);
+                    return $insert;
+                } else {
                     // jika gagal :
-                    $this->session->set_flashdata('error', $this->upload->display_errors());
-                    }	  
-                    //  return "default.jpg"; 
+                    return $this->session->set_flashdata('error', $this->upload->display_errors());
+                }	  
+                //  return "default.jpg"; 
             }
 
             public function getObjekByIdUpdate ($id)
@@ -150,14 +152,6 @@
                 ->result_array();
             }
 
-            // public function getObjeks($limit, $start, $keyword=null){
-
-            //     return $this->db
-            //     ->like('nama_post_tangible', $keyword)
-            //     ->order_by('nama_post_tangible','asc')
-            //     ->get('post_tangible', $limit, $start)
-            //     ->result_array();
-            // }
 
             public function getObjekByProvinsi($id_prov, $query) {
                 return $this->db->query("

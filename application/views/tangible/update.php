@@ -4,7 +4,7 @@
         <h2 class="section-heading" style="color:white">Edit Tipe</h2>
         </div>   
         <button type="button" class="btn btn-ButtonRound py-2 px-6 bg-gray-50 rounded-md"> 
-            <a href="<?= base_url(); ?>tangible/index/<?= $id_prov ?>/<?= $id_daerah ?>/<?= $id_tipe ?>/<?= $id_provinsi ?>">
+            <a href="<?= base_url(); ?>tangible/index/<?= $id_prov ?>/<?= $id_daerah ?>/<?= $id_tipe ?>">
                 <i class="previous">&laquo;</i> 
                 Kembali 
             </a>
@@ -14,7 +14,7 @@
     <div class="section-inner">
         <div class="container">
             <div class="formAddUpdate">
-                <form action="<?= base_url() ?>Tangible/prosesupdatetangible/<?= $id_prov ?>/<?= $id_daerah ?>/<?= $id_tipe ?>/<?= $id_tangible?>/<?= $id_provinsi ?>" 
+                <form action="<?= base_url() ?>Tangible/prosesupdatetangible/<?= $id_prov ?>/<?= $id_daerah ?>/<?= $id_tipe ?>/<?= $id_tangible?>" 
                       method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nama_tangible" class="nAddUpdate">Nama Tangible</label>

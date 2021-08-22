@@ -128,11 +128,11 @@ $(function() {
     // SEARCH //
     $('a[href="#search"]').on('click', function(event) {
         event.preventDefault();
-        $('#search-wrapper').addClass('open');
-        $('#search-wrapper > form > input[type="search"]').focus();
+        $('#container-cari').addClass('open');
+        $('#container-cari > form > input[type="search"]').focus();
     });
     
-    $('#search-wrapper, #search-wrapper button.close').on('click keyup', function(event) {
+    $('#container-cari, #container-cari button.close').on('click keyup', function(event) {
         if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
             $(this).removeClass('open');
         }
@@ -155,11 +155,6 @@ $(function() {
     $('.entry-content table, #post-content table').addClass('table');
     $('.entry-content dl, #post-content dl').addClass('dl-horizontal');
 });
-
-    // ONEPAGER XTRA //
-    $('body').scrollspy({
-        target: '.navbar-fixed-top'
-    })
 
 /*-----------------------------------------------------------------------------------*/
 /*  PORTFOLIO

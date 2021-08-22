@@ -29,11 +29,12 @@
             if($this->upload->do_upload('logo_tangible')) {
                 $fileData = $this->upload->data();    
                 // jika berhasil :
-                $data = ['nama_tangible' => $this->input->post('nama_tangible'),
-                        'id_tipe'        => $this->input->post('id_tipe'),
-                        'id_provinsi'    => $this->input->post('id_provinsi'),
-                        'logo_tangible'  => $fileData['file_name']   
-                        ];
+                $data = array(
+                'nama_tangible' => $this->input->post('nama_tangible'),
+                'id_tipe'        => $this->input->post('id_tipe'),
+                'id_provinsi'    => $this->input->post('id_provinsi'),
+                'logo_tangible'  => $fileData['file_name']   
+                );
                  $this->db->insert('tangible', $data);
                 }
                 else {
